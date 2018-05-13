@@ -1,11 +1,8 @@
 function initXHR(x, value) {
 	console.log(x); 
 	if (x == 'home') {
-		document.getElementById("home").style.display = "block";
-		document.getElementById("lists").style.display = "none";
-		document.getElementById("gList").style.display = "none";
 	}
-	else if (x == 'lists') {
+	else if (x == 'signin') {
 		//		retrieveActiveListsFromServer('/app/json/lists.json');
 		retrieveActiveListsFromServer('/app/list/', 'lists');
 		document.getElementById("home").style.display = "none";

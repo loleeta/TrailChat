@@ -1,7 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
 	<meta charset="utf-8">
@@ -24,54 +21,61 @@
 				padding-top: 56px;
 			}
 		}
-
 	</style>
-
 </head>
 
-<body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="#">TrailChat Home</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="login">Register/Login</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
-
-<!-- Page Content -->
-
-
-
-
+<body onload="initXHR('home', null)">
 <div class="container">
-	<img class="full-width-img" src="../images/snail.png" alt="logo" style="width:100%;"/>
-	<div class="row">
-		<div class="col-lg-12 text-center">
-			<h1 class="mt-5">Welcome To TrailChat</h1>
-			<p class="lead">A chat application with comprehensive link/media history!</p>
+
+	<!-- Navigation bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="javascript:initXHR('home', null)">TrailChat</a>
+			</div>
+
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login">Register/Login</a>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div><!--/.container-fluid -->
+	</nav>
+
+	<div class="text-center">
+		<img src="../images/snail.png" class="rounded" alt="...">
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1 class="mt-5">Welcome To TrailChat</h1>
+				<p class="lead">A chat application with comprehensive link/media history!</p>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- Bootstrap core JavaScript -->
+
+	<!--- id corresponds to id in script.js --->
+	<div id="signin" style="display:none;">
+	</div>
+
+</div> <!-- /container -->
+
+<!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/script.js"></script>
 </body>
-
 </html>

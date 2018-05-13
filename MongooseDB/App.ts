@@ -41,13 +41,7 @@ class App {
     private routes(): void {
         let router = express.Router();
 
-        //returns a JSON with hello world
-        router.get('/', (req, res, next) => {
-            //returns a JSON with hello world for test
-            //res.json({ message: 'Hello World!' });
 
-            res.send('/');
-        });
 
         router.get('/login', (req, res, next) => {
             //do stuff
