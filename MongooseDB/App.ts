@@ -46,18 +46,7 @@ class App {
 
         });
 
-        router.post('/app/list/', (req, res) => {
-            console.log(req.body);
-            var jsonObj = req.body;
-            jsonObj.listId = this.idGenerator;
-            this.Lists.model.create([jsonObj], (err) => {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-            res.send(this.idGenerator.toString());
-            this.idGenerator++;
-        });
+
 
         //after user has successfully logged, in, should point to this page
         router.get('/lobby', (req, res, next) => {
