@@ -17,8 +17,8 @@ class ChatModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                chatName: String,
-                chatID: Number
+                chatID: Number,
+                chatName: String
             }, {collection: 'chats'}
         );
     }

@@ -4,7 +4,7 @@ class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
     static DB_CONNECTION_STRING:string =
-        'mongodb://dbAdmin:test@localhost:3000/trailSample?authSource=admin';
+        'mongodb://dbAdmin:test@localhost:3001/trailSample?authSource=admin';
 
     constructor () {
         DataAccess.connect();
