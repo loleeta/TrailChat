@@ -2,19 +2,18 @@ function initXHR(x, value) {
 	console.log(x); 
 	if (x == 'home') {
         document.getElementById("home").style.display = "block";
+        document.getElementById("welcome").style.display = "none";
         document.getElementById("login").style.display = "none";
 	}
 	else if (x == 'login') {
-		retrieveActiveListsFromServer('/app/list/', 'lists');
+        populateListsView(x);
+		//retrieveActiveListsFromServer('/app/list/', 'lists');
 		document.getElementById("home").style.display = "none";
         document.getElementById("welcome").style.display = "none";
 		document.getElementById("login").style.display = "block";
 	}
-	else if (x == 'gList') {
-		retrieveActiveListsFromServer('/app/list/' + value, 'gList');
-		document.getElementById("home").style.display = "none";
-		document.getElementById("lists").style.display = "none";
-		document.getElementById("gList").style.display = "block";
+	else if (x == 'lobby') {
+		retrieveActiveListsFromServer('/app/list/' + value, 'chats');
 	}
 	else {
 		document.getElementById("home").style.display = "block";
@@ -23,6 +22,9 @@ function initXHR(x, value) {
 	}
 }
 
+function goToLobby() {
+
+}
 
 function retrieveActiveListsFromServer(url, operation) {
 	var xmlhttp = new XMLHttpRequest();
@@ -38,19 +40,21 @@ function retrieveActiveListsFromServer(url, operation) {
 }
 
 //DOM based function
-function populateListsView() {
-	var element = document.getElementById();
-	var newElement = "<label for=\"uname\"><b>Username</b></label>";
+function populateListsView(url) {
+	var element = document.getElementById(url);
+	var newElement = "<div class=\"col-lg-12 text-center\"><label for=\"uname\"><b>Username</b></label>";
 	newElement += "    <input type=\"text\" placeholder=\"Enter Username\" name=\"uname\" required>\n" +
         "    <br><br>\n" +
         "    <!-- Password Box-->\n" +
         "    <label for=\"pword\"><b>Password</b></label>\n" +
         "    <input type=\"text\" placeholder=\"Enter Password\" name=\"pword\" required>\n" +
-        "\n" +
-        "    <p>Don't have an account? <a href=\"/register.html\">Register here</a></p>";
+        "\n" + " <button onclick=\"goToLobby()\">Sign in</button>"
+        "    <p>Don't have an account? <a href=\"/register.html\">Register here</a></p></div>";
 
 	element.innerHTML = newElement;
 }
+
+
 //JQuery based function
 function populateListItems(elementId, list) {
 	var listItems = list.tasks;

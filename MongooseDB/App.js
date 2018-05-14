@@ -26,18 +26,19 @@ var App = /** @class */ (function () {
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
+        var _this = this;
         var router = express.Router();
-        router.get('/login', function (req, res, next) {
-            console.log("Login page");
-        });
         //after user has successfully logged, in, should point to this page
-        router.get('/lobby', function (req, res, next) {
+        router.get('/chats', function (req, res) {
             console.log("Query all chats");
+            _this.Chat.retrieveAllChats(res);
         });
+        router.get('/chats/:id');
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
-        this.expressApp.use('/', express.static(__dirname + '/pages'));
+        this.expressApp.use('/', express.static(__dirname + '/pages/'));
+        this.expressApp.use('/chats', express.static(__dirname + '/pages/lobby.html'));
     };
     return App;
 }());

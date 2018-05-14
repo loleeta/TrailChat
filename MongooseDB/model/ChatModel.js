@@ -18,7 +18,7 @@ var ChatModel = /** @class */ (function () {
     ChatModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Chats", this.schema);
     };
-    ChatModel.prototype.retrieveAllLists = function (response) {
+    ChatModel.prototype.retrieveAllChats = function (response) {
         var query = this.model.find({});
         query.exec(function (err, itemArray) {
             response.json(itemArray);

@@ -41,25 +41,21 @@ class App {
     private routes(): void {
         let router = express.Router();
 
-        router.get('/login', (req, res, next) => {
-            console.log("Login page");
-
-        });
-
-
-
         //after user has successfully logged, in, should point to this page
-        router.get('/lobby', (req, res, next) => {
+        router.get('/chats', (req, res) => {
             console.log("Query all chats");
-
+            this.Chat.retrieveAllChats(res);
         });
+
+        router.get('/chats/:id')
 
 
         this.expressApp.use('/', router);
 
         this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
         this.expressApp.use('/images', express.static(__dirname+'/img'));
-        this.expressApp.use('/', express.static(__dirname+'/pages'));
+        this.expressApp.use('/', express.static(__dirname+'/pages/'));
+        this.expressApp.use('/chats', express.static(__dirname+'/pages/lobby.html'));
 
     }
 
