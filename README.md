@@ -7,9 +7,9 @@ instructions for running:
 
 //to start the MongoDB server
 cd into the MongooseDB folder:
->> md db or (or $mkdir db, if on mac)
+>> md db or ($mkdir db, if on mac)
 
->> start.toDoSample.cmd (or $mongod -port 3001, if on mac)
+>> start.toDoSample.cmd ($ mongod -port 3001) 
 
 if this is the first time running, open up another command prompt and go into the MongooseDB folder:
 >> mongo --port 3001 (open mongo client)
