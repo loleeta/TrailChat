@@ -33,7 +33,12 @@ var App = /** @class */ (function () {
             console.log("Query all chats");
             _this.Chat.retrieveAllChats(res);
         });
-        router.get('/chats/:id');
+        router.get('/chats/:id', function (req, res) {
+            var id = req.params.id;
+            console.log('inside chats: ' + req.params.id);
+            res.statusCode = 200;
+            res.end();
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));

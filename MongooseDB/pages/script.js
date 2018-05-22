@@ -1,19 +1,22 @@
 function initXHR(x, value) {
 	console.log(x); 
-	if (x == 'home') {
-        document.getElementById("home").style.display = "block";
-        document.getElementById("welcome").style.display = "none";
+	if (x == 'welcome') {
+        document.getElementById("welcome").style.display = "block";
+        document.getElementById("lobby").style.display = "none";
         document.getElementById("login").style.display = "none";
 	}
 	else if (x == 'login') {
         populateListsView(x);
 		//retrieveActiveListsFromServer('/app/list/', 'lists');
-		document.getElementById("home").style.display = "none";
-        document.getElementById("welcome").style.display = "none";
+		document.getElementById("welcome").style.display = "none";
+        document.getElementById("lobby").style.display = "none";
 		document.getElementById("login").style.display = "block";
 	}
 	else if (x == 'lobby') {
-		retrieveActiveListsFromServer('/app/list/' + value, 'chats');
+		//retrieveActiveListsFromServer('/app/list/' + value, 'chats');
+        document.getElementById("welcome").style.display = "none";
+        document.getElementById("lobby").style.display = "block";
+        document.getElementById("login").style.display = "none";
 	}
 	else {
 		document.getElementById("home").style.display = "block";
@@ -23,6 +26,7 @@ function initXHR(x, value) {
 }
 
 function goToLobby() {
+	initXHR('lobby', null);
 
 }
 

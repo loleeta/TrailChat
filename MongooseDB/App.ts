@@ -47,7 +47,12 @@ class App {
             this.Chat.retrieveAllChats(res);
         });
 
-        router.get('/chats/:id')
+        router.get('/chats/:id', (req, res) => {
+            var id = req.params.id;
+            console.log('inside chats: ' + req.params.id);
+            res.statusCode = 200;
+            res.end();
+            });
 
 
         this.expressApp.use('/', router);
