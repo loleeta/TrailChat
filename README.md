@@ -16,7 +16,8 @@ if this is the first time running, open up another command prompt and go into th
 
 >> load ('createDB/createAdminUser.js'); (to create users in database)
 
->> load ('createDB/trailChatData.js'); (to enter our data in)
+>> load ('createDB/trailChatData.js'); (to populate user, chat data)
+>> load ('createDB/trailChatData2.js'); (to populate msg data)
 
 in another command prompt in the MongooseDB folder:
 >> npm install (to install dependencies)
