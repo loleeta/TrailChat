@@ -14,10 +14,10 @@ cd into the MongooseDB folder:
 if this is the first time running, open up another command prompt and go into the MongooseDB folder:
 >> mongo --port 3001 (open mongo client)
 
->> load ('createDB/createAdminUser.js'); (to create users in database)
+>> load('createDB/createAdminUser.js'); (to create users in database)
 
->> load ('createDB/trailChatData.js'); (to populate user, chat data)
->> load ('createDB/trailChatData2.js'); (to populate msg data)
+>> load('createDB/trailChatData.js');
+>> load('createDB/trailChatData2.js'); (to populate user, chat, msg data)
 
 in another command prompt in the MongooseDB folder:
 >> npm install (to install dependencies)
