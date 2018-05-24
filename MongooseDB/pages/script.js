@@ -19,9 +19,9 @@ function initXHR(x, value) {
         document.getElementById("login").style.display = "none";
 	}
 	else {
-		document.getElementById("home").style.display = "block";
-		document.getElementById("lists").style.display = "none";
-		document.getElementById("gList").style.display = "none";
+		document.getElementById("welcome").style.display = "block";
+		//document.getElementById("lists").style.display = "none";
+		//document.getElementById("gList").style.display = "none";
 	}
 }
 
