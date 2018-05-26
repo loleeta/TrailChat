@@ -29,11 +29,18 @@ class UserModel {
         this.model = mongooseConnection.model<UserInterface>("Users", this.schema);
     }
 
-    public retrieveAllLists(response:any): any {
+    public retrieveAllUsers(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
         });
+    }
+
+    public retrieveUser(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec ( (err, item) => {
+            response.json(item);
+        })
     }
 }
 export {UserModel};

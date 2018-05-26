@@ -24,6 +24,12 @@ var ChatModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    ChatModel.prototype.retrieveChat = function (response, filter) {
+        var query = this.model.findOne(filter);
+        query.exec(function (err, item) {
+            response.json(item);
+        });
+    };
     return ChatModel;
 }());
 exports.ChatModel = ChatModel;

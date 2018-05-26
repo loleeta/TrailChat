@@ -1,11 +1,11 @@
 import Mongoose = require("mongoose");
 import {DataAccess} from './../DataAccess';
-import {ChatInterface} from '../interfaces/ChatInterface';
+import {MessageInterface} from '../interfaces/MessageInterface';
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
-class ChatModel {
+class MessageModel {
     public schema:any;
     public model:any;
 
@@ -17,17 +17,29 @@ class ChatModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                chatID: Number,
-                chatName: String
-            }, {collection: 'chats'}
+                messageID: Number,
+                messageTime: Date,
+                messageType: String,
+                messageContent: String,
+                user_id: Number,
+                chat_id: Number
+            }, {collection: 'messages'}
         );
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<ChatInterface>("Chats", this.schema);
+        this.model = mongooseConnection.model<MessageInterface>("Messages", this.schema);
     }
 
-    public retrieveAllChats(response:any): any {
+    public retrieveAllMessages(response:any, filter:Object) {
+        var query = this.model.find(filter);
+        query.exec( (err, itemArray) => {
+            response.json(itemArray) ;
+        });
+
+    }
+
+    public retrieveAll(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
@@ -40,5 +52,6 @@ class ChatModel {
             response.json(item);
         });
     }
+
 }
-export {ChatModel};
+export {MessageModel};
