@@ -1,21 +1,14 @@
-<! -- Login component -->
-<div class="col-lg-12 text-center">
-
+<br><br>
   <!-- Username Box -->
-  <label for="uname"><b>Username</b></label>
-  <div id = "uname">
-    <input type="text" placeholder="Enter Username" name="uname" required>
-  </div>
+  <label id="uname"><b>Username</b></label>
+  <input type="text" placeholder="Enter Username" name="uname" required>
+
   <br><br>
-
   <!-- Password Box-->
-  <label for="pword"><b>Password</b></label>
-  <div id = "pword">
-    <input type="text" name="pword" placeholder="Enter Password" required>
-  </div>
+  <label id="pword"><b>Password</b></label>
+  <input type="text" placeholder="Enter Password" name="pword" required>
+  <button>Sign in</button>
 
-  <!-- Submit button -->
-  <button onclick="goToLobby()">Sign in</button>
-  <p>Don't have an account? <a href="register.html">Register here</a></p>
-
-</div>
+  <!-- Sign Up -->
+  <p>Don't have an account? <a href="/register.html">Register here</a></p>
+  <router-outlet></router-outlet>
