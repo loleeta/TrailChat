@@ -5,13 +5,19 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { routing } from './app-route';
+import { Navitem1Component } from './navitem1/navitem1.component';
+import { Navitem2Component } from './navitem2/navitem2.component';
+import { ChatmenuComponent } from './chatmenu/chatmenu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    LoginComponent
+    LoginComponent,
+    Navitem1Component,
+    Navitem2Component,
+    ChatmenuComponent
   ],
   imports: [
     BrowserModule,

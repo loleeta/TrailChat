@@ -4,8 +4,7 @@ import * as logger from 'morgan';
 import * as mongodb from 'mongodb';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
-//var MongoClient = require('mongodb').MongoClient;
-//var Q = require('q');
+
 
 import {ChatModel} from './model/ChatModel';
 import {UserModel} from './model/UserModel';
