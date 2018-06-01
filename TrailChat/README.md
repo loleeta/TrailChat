@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## To run in windows terminal:
+**In TrailChat/MongooseDB folder to start mongo**
+
+`start.toDoSample.cmd`
+
+**In TrailChat/MongooseDB folder to start Express server**
+
+`tsc AppServer.ts`
+
+`node AppServer.js`
+
+
+**In TrailChat/TrailChat folder to install dependencies**
+
+`npm install`
+
+**To start Angular application**
+
+`ng serve`
+
+
+**In TrailChat/Trailchat folder to run unit tests in Express server**
+
+`mocha --reporter spec tests/test1.js`
