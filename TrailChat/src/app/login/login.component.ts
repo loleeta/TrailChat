@@ -11,7 +11,7 @@ import { ChatService } from '../chat-service.service'
 export class LoginComponent implements OnInit {
   private route: ActivatedRoute;
   private service: ChatService;
-  showVar: boolean = true;
+  show: boolean = false;
 
   constructor(private router: Router) { }
 

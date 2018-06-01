@@ -9,7 +9,8 @@ import { Navitem1Component } from './navitem1/navitem1.component';
 import { Navitem2Component } from './navitem2/navitem2.component';
 import { ChatmenuComponent } from './chatmenu/chatmenu.component';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http'
     LoginComponent,
     Navitem1Component,
     Navitem2Component,
-    ChatmenuComponent
+    ChatmenuComponent,
+    ChatwindowComponent,
   ],
   imports: [
     BrowserModule,

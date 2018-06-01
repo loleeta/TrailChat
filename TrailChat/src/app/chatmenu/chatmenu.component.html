@@ -6,7 +6,10 @@
     <p align = center>Zipper</p>
   </div>
   <ul *ngFor = "let c of chats">
-    <a href="#c">{{c}}</a>
+    <!-- <chatwindow [li></chatwindow> -->
+    <chatwindow [chatName]="c"></chatwindow>
+
   </ul>
 
 </div>
+<router-outlet></router-outlet>

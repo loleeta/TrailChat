@@ -23,8 +23,8 @@ export class ChatmenuComponent implements OnInit {
 
     const chatNames = data.map(chat => chat.chatName);
     this.chats = chatNames;
-    this.firstChat = this.chats[0];
-    console.log('First item in array ' + this.firstChat);
+    //this.firstChat = this.chats[0];
+    //console.log('First item in array ' + this.firstChat);
   }
 
   getChats(): void {
