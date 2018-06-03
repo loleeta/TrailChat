@@ -1,1 +1,0 @@
-mongod -port 3001 -dbpath ".\db"

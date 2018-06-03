@@ -1,1 +1,0 @@
-mongo --port 3001 -u dbAdmin -p test --authenticationDatabase admin
