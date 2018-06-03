@@ -10,14 +10,10 @@ import { Navitem2Component } from './navitem2/navitem2.component';
 import { ChatmenuComponent } from './chatmenu/chatmenu.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { MessageComponent } from "./messages/message.component";
 import { MessageListComponent } from "./messages/message-list.component";
 import { MessageInputComponent } from "./messages/message-input.component";
 import { MessagesComponent } from "./messages/messages.component";
-=======
-import { ChatwindowComponent } from './chatwindow/chatwindow.component';
->>>>>>> 9c21900e2c14daa900a2976f3b3f2b6aa4c749d3
 
 @NgModule({
   declarations: [
@@ -27,14 +23,10 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     Navitem1Component,
     Navitem2Component,
     ChatmenuComponent,
-<<<<<<< HEAD
     MessageComponent,
     MessageListComponent,
     MessageInputComponent,
     MessagesComponent
-=======
-    ChatwindowComponent,
->>>>>>> 9c21900e2c14daa900a2976f3b3f2b6aa4c749d3
   ],
   imports: [
     BrowserModule,
