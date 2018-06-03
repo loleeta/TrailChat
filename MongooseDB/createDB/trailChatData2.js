@@ -6,7 +6,11 @@ msgC = db.getCollection("messages")
 //user has user_id, user_name, user_email, user_ps
 msgC.insert(
     {
+<<<<<<< HEAD
         message_id: 1,
+=======
+        message_id: z,
+>>>>>>> 9c21900e2c14daa900a2976f3b3f2b6aa4c749d3
         message_time: Date.now(),
         message_type: "message",
         message_content: "Hello from Lolita",
