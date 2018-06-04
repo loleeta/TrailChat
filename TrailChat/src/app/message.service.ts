@@ -11,7 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   getMessages(chatID: number) {
-    return this.http.get('http://localhost:8080//messages/:' + chatID).pipe(
+    return this.http.get('http://localhost:8080/messages/' + chatID).pipe(
       // map((response:any) => {
       //   return response.json;
       // }));

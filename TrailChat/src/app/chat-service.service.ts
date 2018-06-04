@@ -15,6 +15,7 @@ export class ChatService {
   constructor(private http: HttpClient) {
   }
 
+  // getting the chatroom names
   getChats() {
 
     return this.http.get('http://localhost:8080/chats').pipe(

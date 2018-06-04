@@ -22,14 +22,14 @@ export class ChatwindowComponent implements OnInit {
     console.log('Updating chats with:');
     console.log(data);
 
-    const chatNames = data.map(chat => chat.chatName);
-    this.chatMsgs = chatNames;
+   // const chatNames = data.map(chat => chat.chatName);
+    this.chatMsgs = data;
     // this.firstChat = this.chats[0];
     // console.log('First item in array ' + this.firstChat);
   }
 
   // retrieve data from Express Server using message service
-  getChats(): void {
+  getChatMessages(): void {
     console.log('calling REST API: getMessages()');
     this.chatMsgs = this.msgService.getMessages(this.chatID)
       .subscribe(chatData => {
@@ -37,6 +37,14 @@ export class ChatwindowComponent implements OnInit {
       });
     console.log('Request was made, waiting for results..');
   }
+
+  selectChatRoom(chat) {
+    console.log("on selectChatRoom " + chat.chatName);
+    this.chatID = chat.chatID;
+    this.chatName = chat.chatName;
+    this.getChatMessages();
+  }
+
 
   ngOnInit() {
   }

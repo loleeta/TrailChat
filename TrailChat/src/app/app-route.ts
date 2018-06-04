@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'chatmenu', component: ChatmenuComponent },
-  { path: 'msg', component: ChatwindowComponent}
+  { path: 'chatwindow', component: ChatwindowComponent}
 
 
 ];

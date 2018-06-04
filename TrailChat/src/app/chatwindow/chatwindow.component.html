@@ -1,4 +1,12 @@
-<a routerLink = '/msg'>{{chatName}}</a>
-<p>
-  {{chatMsgs}}
-</p>
+<style>
+  div {
+    left: 500px;
+    top: 500px;
+    position: absolute;
+  }
+</style>
+
+<chatmenu (selectChatRoom)="selectChatRoom($event)"></chatmenu>
+<div>
+  <p *ngFor = "let message of chatMsgs">{{message.message_time}} {{message.message_content}}</p>
+</div>
