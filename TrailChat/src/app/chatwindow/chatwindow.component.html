@@ -10,3 +10,7 @@
 <div>
   <p *ngFor = "let message of chatMsgs">{{message.message_time}} {{message.message_content}}</p>
 </div>
+
+<div>
+  <button (click)="sendMessage('successful attempt at sending a message')">Send</button>
+</div>
