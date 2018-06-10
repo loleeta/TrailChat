@@ -17,8 +17,8 @@ const SERVER_URL = 'http://localhost:8080';
 
 export class ChatwindowComponent implements OnInit {
   chatMsgs: Message[] = [];
-  @Input() chatName: string;
-  @Input() chatID: number;
+  @Input() chat_name: string;
+  @Input() chat_id: number;
   messageContent: string;
   ioConnection: any;
 
@@ -26,8 +26,8 @@ export class ChatwindowComponent implements OnInit {
   }
 
   private initIoConnection(): void {
-    this.chatID = 1;
-    this.SocketService.initSocket(this.chatID);
+    this.chat_id = 1;
+    this.SocketService.initSocket(this.chat_id);
 
     this.ioConnection = this.SocketService.onMessage()
       .subscribe((message: Message) => {
@@ -59,7 +59,7 @@ export class ChatwindowComponent implements OnInit {
       message_type: 'test',
       message_content: input.value,
       user_id: 1,
-      chat_id: this.chatID
+      chat_id: this.chat_id
     };
 
     this.SocketService.send(messageTest);
@@ -81,7 +81,7 @@ export class ChatwindowComponent implements OnInit {
   // retrieve data from Express Server using message service
   getChatMessages(): void {
     console.log('calling REST API: getMessages()');
-    this.msgService.getMessages(this.chatID)
+    this.msgService.getMessages(this.chat_id)
       .subscribe(chatData => {
         this.updateMsg(chatData);
       });
@@ -89,10 +89,10 @@ export class ChatwindowComponent implements OnInit {
   }
 
   selectChatRoom(chat) {
-    console.log("on selectChatRoom " + chat.chatName);
-    this.chatID = chat.chatID;
-    this.chatName = chat.chatName;
-    this.SocketService.joinRoom(chat.chatID);
+    console.log("on selectChatRoom " + chat.chat_name);
+    this.chat_id = chat.chat_id;
+    this.chat_name = chat.chat_name;
+    this.SocketService.joinRoom(chat.chat_id);
     this.getChatMessages();
   }
 
