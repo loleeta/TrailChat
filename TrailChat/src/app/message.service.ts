@@ -11,7 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   getMessages(chatID: number) {
-    return this.http.get('http://localhost:8080//messages/:' + chatID).pipe(
+    return this.http.get('http://localhost:8080/messages/' + chatID).pipe(
       // map((response:any) => {
       //   return response.json;
       // }));
@@ -20,6 +20,21 @@ export class MessageService {
         console.log(error);
         return of(null);
       }));
-
   }
+
+  addMessage(message) {
+    return this.http.post('http://localhost:8080/messages/' + message.chat_id, message).pipe(
+      // map((response:any) => {
+      //   return response.json;
+      // }));
+      catchError(error => {
+        console.log('Error in message service');
+        console.log(error);
+        return of(null);
+      }));
+  }
+
+
+
+
 }

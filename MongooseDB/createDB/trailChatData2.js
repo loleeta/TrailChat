@@ -6,7 +6,7 @@ msgC = db.getCollection("messages")
 //user has user_id, user_name, user_email, user_ps
 msgC.insert(
     {
-        message_id: z,
+        message_id: 1,
         message_time: Date.now(),
         message_type: "message",
         message_content: "Hello from Lolita",

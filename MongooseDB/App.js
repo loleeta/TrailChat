@@ -66,6 +66,22 @@ var App = /** @class */ (function () {
             console.log("Query all messages");
             _this.Message.retrieveAll(res);
         });
+        // Save chat messages to the database
+        /*
+        router.post('/:chatid', (req, res) => {
+            console.log("Sending messages from chat to db" + id);
+            this.Message.model.create([jsonObj], (err) => {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+
+        });
+        */
+        router.post("/messages/:chat_id", function (req, res) {
+            console.log("adding a message");
+            _this.Message.addMessage(req.body);
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));

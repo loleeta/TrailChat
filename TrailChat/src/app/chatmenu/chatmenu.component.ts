@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ChatService } from '../chat-service.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class ChatmenuComponent implements OnInit {
   @Input() chatNumber: number[] = [1, 2, 3];
   chatID: string;
   chatName: string;
+  @Output() selectChatRoom = new EventEmitter<any>();
 
   constructor(private chatService: ChatService) {
 
@@ -21,12 +22,13 @@ export class ChatmenuComponent implements OnInit {
     console.log('Updating chats with:');
     console.log(data);
 
-    const chatNames = data.map(chat => chat.chatName);
-    this.chats = chatNames;
+    //const chatNames = data.map(chat => chat.chatName);
+    this.chats = data;
     //this.firstChat = this.chats[0];
     //console.log('First item in array ' + this.firstChat);
   }
 
+  //calls getChats from the Chat Service
   getChats(): void {
     console.log('calling REST API: getchats()');
     this.chats = this.chatService.getChats()
@@ -34,6 +36,12 @@ export class ChatmenuComponent implements OnInit {
         this.updateChats(chatData);
       });
     console.log('Request was made, waiting for results..');
+  }
+
+
+  onChatClick(chat) {
+    this.selectChatRoom.emit(chat);
+    console.log("on chat click " + chat.chatName);
   }
 
   ngOnInit() {

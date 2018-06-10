@@ -4,7 +4,9 @@ import * as logger from 'morgan';
 import * as mongodb from 'mongodb';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
-import {App} from './App';
+import { App } from './App';
+import { socketIOServer } from './socketIO';
 
-let server: any = new App().expressApp;
-server.listen(8080);
+let app: express.Application = new App().expressApp;
+
+let ioServer: any = new socketIOServer(app.listen(8080));
