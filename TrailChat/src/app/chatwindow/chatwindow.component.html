@@ -1,16 +1,24 @@
-<style>
-  div {
-    left: 500px;
-    top: 500px;
-    position: absolute;
-  }
-</style>
-
+<!-- Left hand Chat Room Selection -->
 <chatmenu (selectChatRoom)="selectChatRoom($event)"></chatmenu>
-<div>
-  <p *ngFor = "let message of chatMsgs">{{message.message_time}} {{message.message_content}}</p>
+
+<!-- Big Container to hold the messages -->
+  <div class = "messagebox">
+    <div class="individual-box" *ngFor = "let message of chatMsgs">
+      <div class="messagebox-header">
+        <h5 class = "messagebox-title">User ID: {{message.user_id}}</h5>
+        <!-- <div class = "messagebox-time">{{message.message_time}}</div> -->
+      </div>
+      <p class = "messagebox-text">{{message.message_content}}</p>
+    </div>
 </div>
 
-<div>
-  <button (click)="sendMessage('successful attempt at sending a message')">Send</button>
+<!-- Send Message section @ bottom of page -->
+<div class="chat-footer">
+  <!-- Text box -->
+  <input id="message-input" type="text" placeholder="Type your message...">
+  <!-- Send Button -->
+  <button (click)="sendMessage()">Send</button>
 </div>
+
+
+

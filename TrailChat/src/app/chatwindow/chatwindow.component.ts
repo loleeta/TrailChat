@@ -26,6 +26,7 @@ export class ChatwindowComponent implements OnInit {
   }
 
   private initIoConnection(): void {
+    this.chatID = 1;
     this.SocketService.initSocket(this.chatID);
 
     this.ioConnection = this.SocketService.onMessage()
@@ -46,8 +47,9 @@ export class ChatwindowComponent implements OnInit {
     */
   }
 
-  public sendMessage(text: string): void {
-    if (!text) {
+  public sendMessage(): void {
+    var input = <HTMLInputElement> document.getElementById("message-input");
+    if (!input) {
       return;
     }
 
@@ -55,14 +57,14 @@ export class ChatwindowComponent implements OnInit {
       message_id: 1,
       message_time: new Date(),
       message_type: 'test',
-      message_content: text,
+      message_content: input.value,
       user_id: 1,
       chat_id: this.chatID
     };
 
     this.SocketService.send(messageTest);
-    // this.messageContent = null;
     this.msgService.addMessage(messageTest);
+    input.value = null;
   }
 
   // save retrieved data to property of this component
