@@ -31,6 +31,13 @@ class MessageModel {
         this.model = mongooseConnection.model<MessageInterface>("Messages", this.schema);
     }
 
+    public addMessage(message): void {
+        console.log('testing to see if message was added to database');
+        console.log(message);
+        var query = this.model.create(message);
+        query.exec();
+    }
+
     public retrieveAllMessages(response:any, filter:Object) {
         var query = this.model.find(filter);
         query.exec( (err, itemArray) => {

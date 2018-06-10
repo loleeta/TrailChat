@@ -62,6 +62,7 @@ export class ChatwindowComponent implements OnInit {
 
     this.SocketService.send(messageTest);
     // this.messageContent = null;
+    this.msgService.addMessage(messageTest);
   }
 
   // save retrieved data to property of this component

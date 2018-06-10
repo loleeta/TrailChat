@@ -22,6 +22,18 @@ export class MessageService {
       }));
   }
 
+  addMessage(message) {
+    return this.http.post('http://localhost:8080/messages/' + message.chat_id, message).pipe(
+      // map((response:any) => {
+      //   return response.json;
+      // }));
+      catchError(error => {
+        console.log('Error in message service');
+        console.log(error);
+        return of(null);
+      }));
+  }
+
 
 
 

@@ -101,6 +101,11 @@ class App {
         });
         */
 
+        router.post("/messages/:chat_id", (req, res) => {
+            console.log("adding a message");
+            this.Message.addMessage(req.body);
+        });
+
 
 
         this.expressApp.use('/', router);
