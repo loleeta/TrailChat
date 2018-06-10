@@ -63,7 +63,7 @@ export class ChatwindowComponent implements OnInit {
     };
 
     this.SocketService.send(messageTest);
-    this.msgService.addMessage(messageTest);
+   // this.msgService.addMessage(messageTest);
     input.value = null;
   }
 

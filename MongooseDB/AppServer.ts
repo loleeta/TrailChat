@@ -7,6 +7,8 @@ import * as bodyParser from 'body-parser';
 import { App } from './App';
 import { socketIOServer } from './socketIO';
 
-let app: express.Application = new App().expressApp;
+let app = new App();
 
-let ioServer: any = new socketIOServer(app.listen(8080));
+let expressApp: express.Application = app.expressApp;
+
+let ioServer: any = new socketIOServer(expressApp.listen(8080), app.Message);
