@@ -1,7 +1,7 @@
 import Mongoose = require("mongoose");
 
 interface ChatInterface extends Mongoose.Document {
-    chatID: number;
-    chatName: string;
+    chat_id: number;
+    chat_name: string;
 }
 export {ChatInterface};

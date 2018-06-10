@@ -11,10 +11,10 @@ var MessageModel = /** @class */ (function () {
     }
     MessageModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            messageID: Number,
-            messageTime: Date,
-            messageType: String,
-            messageContent: String,
+            message_id: Number,
+            message_time: Date,
+            message_type: String,
+            message_content: String,
             user_id: Number,
             chat_id: Number
         }, { collection: 'messages' });
@@ -25,7 +25,7 @@ var MessageModel = /** @class */ (function () {
     MessageModel.prototype.addMessage = function (message) {
         console.log('testing to see if message was added to database');
         console.log(message);
-        //var query = 
+        //var query =
         this.model.create(message);
         //query.exec();
     };
