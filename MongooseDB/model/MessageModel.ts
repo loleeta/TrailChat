@@ -17,10 +17,10 @@ class MessageModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                messageID: Number,
-                messageTime: Date,
-                messageType: String,
-                messageContent: String,
+                message_id: Number,
+                message_time: Date,
+                message_type: String,
+                message_content: String,
                 user_id: Number,
                 chat_id: Number
             }, {collection: 'messages'}
@@ -34,8 +34,9 @@ class MessageModel {
     public addMessage(message): void {
         console.log('testing to see if message was added to database');
         console.log(message);
-        var query = this.model.create(message);
-        query.exec();
+        //var query =
+        this.model.create(message);
+        //query.exec();
     }
 
     public retrieveAllMessages(response:any, filter:Object) {

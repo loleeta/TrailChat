@@ -1,16 +1,19 @@
 import { Server } from 'http';
 import * as socketIo from 'socket.io';
 import { Message } from './model/message';
+import { MessageModel } from './model/MessageModel';
 
 export class socketIOServer {
   public static readonly PORT: number = 8080;
   private io: socketIo.Server;
   private port: string | number;
+  private messageService: MessageModel;
 
-  constructor(server: Server) {
+  constructor(server: Server, MessageService: MessageModel) {
     this.sockets(server);
     this.config();
     this.listen();
+    this.messageService = MessageService;
   }
 
   private sockets(server: Server): void {
@@ -28,10 +31,14 @@ export class socketIOServer {
       socket.on('message', (m: Message) => {
         console.log('[server](message): %s', JSON.stringify(m));
 
+        this.messageService.addMessage(m);
+
         // this function sends a message to a particular chatroom
         this.io.to(m.chat_id.toString()).emit('message', m);
         // look at which chat room they are sending the message to
         // then broadcast it to those people
+
+
       });
 
       // Join a new chat room

@@ -88,19 +88,6 @@ class App {
         });
 
 
-        // Save chat messages to the database
-        /*
-        router.post('/:chatid', (req, res) => {
-            console.log("Sending messages from chat to db" + id);
-            this.Message.model.create([jsonObj], (err) => {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-
-        });
-        */
-
         router.post("/messages/:chat_id", (req, res) => {
             console.log("adding a message");
             this.Message.addMessage(req.body);

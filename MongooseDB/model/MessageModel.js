@@ -25,8 +25,9 @@ var MessageModel = /** @class */ (function () {
     MessageModel.prototype.addMessage = function (message) {
         console.log('testing to see if message was added to database');
         console.log(message);
-        var query = this.model.create(message);
-        query.exec();
+        //var query = 
+        this.model.create(message);
+        //query.exec();
     };
     MessageModel.prototype.retrieveAllMessages = function (response, filter) {
         var query = this.model.find(filter);

@@ -4,20 +4,20 @@ chatC = db.getCollection("chats")
 chatC.remove({})
 chatC.insert(
     {
-        chatName: "cat chat",
-        chatID: 1
+        chat_name: "cat chat",
+        chat_id: 1
     }
 )
 chatC.insert(
     {
-        chatName: "car chat",
-        chatID: 2
+        chat_name: "car chat",
+        chat_id: 2
     }
 )
 chatC.insert(
     {
-        chatName: "dev chat",
-        chatID: 3
+        chat_name: "dev chat",
+        chat_id: 3
     }
 )
 db.createCollection('users')
@@ -25,27 +25,27 @@ userC = db.getCollection("users")
 userC.remove({})
 userC.insert(
     {
-        userID: 1,
-        userName: "lolita",
-        userEmail: "lolita@lolita.com",
-        userPS: "lam"
+        user_id: 1,
+        user_name: "lolita",
+        user_email: "lolita@lolita.com",
+        user_ps: "lam"
     }
 )
 
 userC.insert(
     {
-        userID: 2,
-        userName: "christine",
-        userEmail: "christine@christine.com",
-        userPS: "lew"
+        user_id: 2,
+        user_name: "christine",
+        user_email: "christine@christine.com",
+        user_ps: "lew"
     }
 )
 
 userC.insert(
     {
-        userID: 3,
-        userName: "tong",
-        userEmail: "tong@tong.com",
-        userPS: "xu"
+        user_id: 3,
+        user_name: "tong",
+        user_email: "tong@tong.com",
+        user_ps: "xu"
     }
 )
