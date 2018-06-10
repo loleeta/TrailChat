@@ -11,8 +11,8 @@ var ChatModel = /** @class */ (function () {
     }
     ChatModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            chatID: Number,
-            chatName: String
+            chat_id: Number,
+            chat_name: String
         }, { collection: 'chats' });
     };
     ChatModel.prototype.createModel = function () {

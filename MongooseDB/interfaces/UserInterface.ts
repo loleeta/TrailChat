@@ -1,9 +1,9 @@
 import Mongoose = require("mongoose");
 
 interface UserInterface extends Mongoose.Document {
-    userID: number;
-    userName: string;
-    userEmail: string;
-    userPS: string;
+    user_id: number;
+    user_name: string;
+    user_email: string;
+    user_ps: string;
 }
 export {UserInterface};
