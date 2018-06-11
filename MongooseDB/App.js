@@ -70,6 +70,16 @@ var App = /** @class */ (function () {
             console.log("adding a message");
             _this.Message.addMessage(req.body);
         });
+        //route to return JSON of links in a chat room only (non-working)
+        router.get('/messages/:chat_id/links', function (req, res) {
+            var id = req.params.chat_id;
+            console.log("Query all links within chat " + id);
+            _this.Message.retrieveLinks(res, id);
+        });
+        router.get('/messages_last', function (req, res) {
+            console.log("Querying last message ID");
+            _this.Message.retrieveOldestID(res);
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));

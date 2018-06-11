@@ -93,6 +93,17 @@ class App {
             this.Message.addMessage(req.body);
         });
 
+        //route to return JSON of links in a chat room only (non-working)
+        router.get('/messages/:chat_id/links', (req, res) => {
+            var id = req.params.chat_id;
+            console.log("Query all links within chat " + id);
+            this.Message.retrieveLinks(res, id);
+        });
+
+        router.get('/messages_last', (req, res) => {
+            console.log("Querying last message ID");
+            this.Message.retrieveOldestID(res);
+        });
 
 
         this.expressApp.use('/', router);

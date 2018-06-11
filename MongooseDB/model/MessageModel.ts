@@ -44,7 +44,6 @@ class MessageModel {
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
         });
-
     }
 
     public retrieveAll(response:any): any {
@@ -60,6 +59,21 @@ class MessageModel {
             response.json(item);
         });
     }
+
+    public retrieveLinks(response:any, id:any) {
+        var query = this.model.find({ message_type : 'link', chat_id: id});
+        query.exec( (err, itemArray) => {
+            response.json(itemArray) ;
+        });
+    }
+
+    public retrieveOldestID(response:any) {
+        var query = this.model.findOne().sort({message_id: -1}).select('message_id');
+        query.exec( (err, itemArray) => {
+            response.json(itemArray) ;
+        });
+    }
+
 
 }
 export {MessageModel};

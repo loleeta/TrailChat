@@ -47,6 +47,18 @@ var MessageModel = /** @class */ (function () {
             response.json(item);
         });
     };
+    MessageModel.prototype.retrieveLinks = function (response, id) {
+        var query = this.model.find({ message_type: 'link', chat_id: id });
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
+    MessageModel.prototype.retrieveOldestID = function (response) {
+        var query = this.model.findOne().sort({ message_id: -1 }).select('message_id');
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
     return MessageModel;
 }());
 exports.MessageModel = MessageModel;
