@@ -9,9 +9,10 @@ var should = chai.should();
 var http = require('http');
 chai.use(chaiHttp);
 
-describe('TrailChat Azure tests', function () {
-  this.timeout(15000);
 
+//GET test
+describe('TrailChat Azure get tests', function () {
+  this.timeout(15000);
   var requestResult;
   var response;
 
@@ -63,3 +64,45 @@ describe('TrailChat Azure tests', function () {
   });
 
 });
+
+
+//PUT test
+describe('TrailChat Azure put tests', function() {
+  this.timeout(15000);
+  var requestResult;
+  var response;
+
+  let newMsg = {
+    message_id: 999,
+    message_time: Date.now(),
+    message_type: "message",
+    message_content: "Test from mocha test",
+    user_id: 1,
+    chat_id: 3
+  }
+
+  chai.request('http://trailchatclt.azurewebsites.net')
+    .put("/messages/:3")
+    .send(newMsg)
+    .end(function (err, res) {
+      requestResult = res.body;
+      response = res;
+      expect(err).to.be.null;
+      expect(res).to.have.status(200);
+      done();
+    });
+
+  it("POST should have a success status response", function() {
+    expect(response).to.have.status(200);
+    expect(response.body).to.be.an.object;
+    expect(response.body).to.have.property('message');
+  });
+
+  it('It should have the string property in response body', function(){
+    expect(response.body).to.have.property('message').to.be.a('string');
+  });
+
+
+});
+
+
