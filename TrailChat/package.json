@@ -21,13 +21,16 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "@types/socket.io": "^1.4.34",
+    "autolinker": "^1.6.2",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "core-js": "^2.5.4",
     "express": "^4.16.3",
+    "get-urls": "^7.2.0",
     "mocha": "^5.2.0",
     "rxjs": "^6.0.0",
     "socket.io": "^2.1.1",
+    "url-regex": "^4.1.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

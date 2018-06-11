@@ -11,6 +11,7 @@ import { ChatmenuComponent } from './chatmenu/chatmenu.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     Navitem2Component,
     ChatmenuComponent,
     ChatwindowComponent,
+    LinksComponent
   ],
   imports: [
     BrowserModule,

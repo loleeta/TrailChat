@@ -11,4 +11,4 @@ let app = new App();
 
 let expressApp: express.Application = app.expressApp;
 
-let ioServer: any = new socketIOServer(expressApp.listen(8080), app.Message);
+let ioServer: any = new socketIOServer(expressApp.listen(process.env.PORT || 8080), app.Message);

@@ -1,4 +1,5 @@
 
+declare var require: any
 
 
 import { Input, Component, OnInit } from '@angular/core';
@@ -10,15 +11,20 @@ import { SocketService } from '../socket.service';
 import { Message } from '../../../../MongooseDB/model/message'
 
 import * as io from 'socket.io-client';
+
+const urlRegex = require('url-regex');
+const Autolinker = require('autolinker');
+const getUrls = require('get-urls');
+
 const SERVER_URL = 'http://localhost:8080';
 
 @Component({
-  selector: 'chatwindow',
-  templateUrl: './chatwindow.component.html',
-  styleUrls: ['./chatwindow.component.css']
+  selector: 'app-links',
+  templateUrl: './links.component.html',
+  styleUrls: ['./links.component.css']
 })
+export class LinksComponent implements OnInit {
 
-export class ChatwindowComponent implements OnInit {
   chatMsgs: Message[] = [];
   @Input() chat_name: string;
   @Input() chat_id: number;
@@ -50,33 +56,47 @@ export class ChatwindowComponent implements OnInit {
     */
   }
 
-  public sendMessage(): void {
-    var input = <HTMLInputElement> document.getElementById("message-input");
-    if (!input) {
-      return;
-    }
-
-    let messageTest: Message = {
-      message_id: 1,
-      message_time: new Date(),
-      message_type: 'test',
-      message_content: input.value,
-      user_id: 1,
-      chat_id: this.chat_id
-    };
-
-    this.SocketService.send(messageTest);
-   // this.msgService.addMessage(messageTest);
-    input.value = null;
-  }
-
   // save retrieved data to property of this component
   updateMsg(data) {
     console.log('Updating chats with:');
     console.log(data);
 
+    let transformedMessages: Message[] = [];
+    var autolinker = new Autolinker( { newWindow: false, truncate: 25 } );
+
+    for(let message of data){
+
+      var text = message.message_content;
+      console.log(text);
+      console.log(getUrls(text));
+      //getUrls(text)
+
+
+      if(urlRegex().test(text)){
+        console.log("heihei");
+
+
+      //autolinker.link( text );
+        //message.content =   getUrls(text)[0];
+        var it = getUrls(text).values();
+        var first = it.next();
+        var value = first.value;
+
+        let messageMod: Message = {
+          message_id: message.message_id,
+          message_time: message.message_time,
+          message_type: message.message_type,
+          message_content: value,
+          user_id: message.user_id,
+          chat_id: message.chat_id
+        };
+
+        transformedMessages.push(messageMod);
+      }
+    }
+
     // const chatNames = data.map(chat => chat.chatName);
-    this.chatMsgs = data;
+    this.chatMsgs = transformedMessages;
     // this.firstChat = this.chats[0];
     // console.log('First item in array ' + this.firstChat);
   }
@@ -103,4 +123,5 @@ export class ChatwindowComponent implements OnInit {
   ngOnInit(): void {
     this.initIoConnection();
   }
+
 }
