@@ -87,10 +87,19 @@ class App {
             this.Message.retrieveAll(res);
         });
 
-
+        //add a message to the database
         router.post("/messages/:chat_id", (req, res) => {
             console.log("adding a message");
             this.Message.addMessage(req.body);
+        });
+
+        //CHANGES BEING MADE HERE
+        //route to get links of a certain chat
+        router.get('/messages/:chat_id/links', (req, res) => {
+            console.log("Trying to get links");
+            var variable = req.params.chat_id;
+            console.log("Query links from chat: " + variable);
+            this.Message.retrieveLinks(res,{chat_id: variable});
         });
 
 

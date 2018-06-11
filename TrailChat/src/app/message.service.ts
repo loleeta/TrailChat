@@ -10,6 +10,7 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
+  //gets messages of a certain chat
   getMessages(chatID: number) {
     return this.http.get('http://localhost:8080/messages/' + chatID).pipe(
       // map((response:any) => {
@@ -22,11 +23,25 @@ export class MessageService {
       }));
   }
 
+  //adds message to a certain chat
   addMessage(message) {
     return this.http.post('http://localhost:8080/messages/' + message.chat_id, message).pipe(
       // map((response:any) => {
       //   return response.json;
       // }));
+      catchError(error => {
+        console.log('Error in message service');
+        console.log(error);
+        return of(null);
+      }));
+  }
+
+  //get links of a certain chat id
+  getLinks(chatID: number){
+    return this.http.get ('http://localhost:8080/links/').pipe(
+    // map((response:any) => {
+    //   return response.json;
+    // }));
       catchError(error => {
         console.log('Error in message service');
         console.log(error);

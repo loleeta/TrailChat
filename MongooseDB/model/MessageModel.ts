@@ -61,5 +61,10 @@ class MessageModel {
         });
     }
 
+    public retrieveLinks(response:any, filter:Object) {
+        var query = this.model.find(filter);
+
+    }
+
 }
 export {MessageModel};
