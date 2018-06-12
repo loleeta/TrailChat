@@ -12,4 +12,5 @@ static id: string = '553848908512-druc1c98dcvua05ghmjq3pjcefmo34vs.apps.googleus
 static secret:string = 'GsVgpnLi7zlYdSbJg_CwqYlU';
 
 }
+
 export default googleOauth2;

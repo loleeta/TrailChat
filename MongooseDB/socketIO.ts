@@ -2,6 +2,9 @@ import { Server } from 'http';
 import * as socketIo from 'socket.io';
 import { Message } from './model/message';
 import { MessageModel } from './model/MessageModel';
+import { GooglePassport_1 } from './GooglePassport';
+import { passport } from 'passport';
+
 
 export class socketIOServer {
   public static readonly PORT: number = 8080;
@@ -14,6 +17,7 @@ export class socketIOServer {
     this.config();
     this.listen();
     this.messageService = MessageService;
+    this.googlePassportObj = new GooglePassport_1["default"]();
   }
 
   private sockets(server: Server): void {
@@ -29,6 +33,10 @@ export class socketIOServer {
       console.log('Connected client on port %s.', this.port);
 
       socket.on('message', (m: Message) => {
+
+        m.message_type = this.googlePassportObj.displayName;
+        m.user_id = this.googlePassportObj.userId;
+
         console.log('[server](message): %s', JSON.stringify(m));
 
         this.messageService.addMessage(m);
@@ -55,5 +63,3 @@ export class socketIOServer {
   }
 
 }
-
-

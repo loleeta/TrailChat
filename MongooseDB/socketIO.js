@@ -1,5 +1,9 @@
 "use strict";
 exports.__esModule = true;
+
+var GooglePassport_1 = require("./GooglePassport");
+var passport = require('passport');
+
 var socketIo = require("socket.io");
 var socketIOServer = /** @class */ (function () {
     function socketIOServer(server, MessageService) {
@@ -7,6 +11,7 @@ var socketIOServer = /** @class */ (function () {
         this.config();
         this.listen();
         this.messageService = MessageService;
+        this.googlePassportObj = new GooglePassport_1["default"]();
     }
     socketIOServer.prototype.sockets = function (server) {
         this.io = socketIo(server);
@@ -19,6 +24,15 @@ var socketIOServer = /** @class */ (function () {
         this.io.on('connect', function (socket) {
             console.log('Connected client on port %s.', _this.port);
             socket.on('message', function (m) {
+                //var message = JSON.stringify(m);
+                //m.message_type = googlePassportObj.displayName;
+
+
+                // modify the user name
+                //console.log(_this.googlePassportObj);
+                //m.message_content = _this.googlePassportObj.displayName;
+                m.message_type = _this.googlePassportObj.displayName;
+                m.user_id = _this.googlePassportObj.userId;
                 console.log('[server](message): %s', JSON.stringify(m));
                 _this.messageService.addMessage(m);
                 // this function sends a message to a particular chatroom

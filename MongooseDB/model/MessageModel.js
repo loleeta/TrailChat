@@ -19,22 +19,33 @@ var MessageModel = /** @class */ (function () {
             chat_id: Number
         }, { collection: 'messages' });
     };
+
     MessageModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Messages", this.schema);
     };
+
     MessageModel.prototype.addMessage = function (message) {
-        console.log('testing to see if message was added to database');
-        console.log(message);
+        // console.log('testing to see if message was added to database');
+        // console.log(message);
         //var query =
         this.model.create(message);
         //query.exec();
     };
+
+    MessageModel.prototype.retrieveMyMessages = function (response, filter) {
+        var query = this.model.find(filter);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
+
     MessageModel.prototype.retrieveAllMessages = function (response, filter) {
         var query = this.model.find(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
     };
+
     MessageModel.prototype.retrieveAll = function (response) {
         var query = this.model.find({});
         query.exec(function (err, itemArray) {

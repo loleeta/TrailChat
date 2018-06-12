@@ -12,6 +12,7 @@ export class ChatmenuComponent implements OnInit {
   @Input() chatNumber: number[] = [1, 2, 3];
   chatID: string;
   chatName: string;
+
   @Output() selectChatRoom = new EventEmitter<any>();
 
   constructor(private chatService: ChatService) {

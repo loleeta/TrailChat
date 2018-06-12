@@ -9,9 +9,10 @@ var UserModel_1 = require("./model/UserModel");
 var MessageModel_1 = require("./model/MessageModel");
 var GooglePassport_1 = require("./GooglePassport");
 var passport = require('passport');
-
-const oauth2 = require("./googleOauth2");
 // Creates and configures an ExpressJS web server.
+var userId;
+var userName;
+
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
     function App() {
@@ -36,6 +37,9 @@ var App = /** @class */ (function () {
     App.prototype.validateAuth = function (req, res, next) {
         if (req.isAuthenticated()) {
             console.log("user is authenticated");
+            userId = req.user.id;
+            userName = req.user.displayName;
+            console.log(userId);
             return next();
         }
         console.log("user is not authenticated");
@@ -48,72 +52,81 @@ var App = /** @class */ (function () {
         router.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email'] }));
         router.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/#/chatwindow', failureRedirect: '/'
         }));
-
-        // Use the oauth middleware to automatically get the user's profile
-        router.use(oauth2.template);
-
         router.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
-
-
         });
-
         //route to return JSON of chat objects
         router.get('/chats', function (req, res) {
-            console.log("Query all chats");
+            //console.log("Query all chats");
+            //console.log("tt");
+            //console.log(_this.googlePassportObj);
+
+
             _this.Chat.retrieveAllChats(res);
         });
+
         //route to return a unique chat based on ID
         router.get('/chats/:chatID', this.validateAuth, function (req, res) {
             var id = req.params.chatID;
-            console.log("Query a user with id:" + id);
+            // console.log("Query a user with id:" + id);
+            // console.log("tt");
+            // console.log(_this.googlePassportObj);
+            // userName = _this.googlePassportObj.displayName;
+
             _this.Chat.retrieveChat(res, { chatID: id });
         });
         //route to return JSON of all users
         router.get('/users', this.validateAuth, function (req, res) {
-            console.log("Query all users");
+            // console.log("Query all users");
+            // console.log("tt");
+            // console.log(_this.googlePassportObj);
             _this.User.retrieveAllUsers(res);
         });
         //route to return JSON of a single user
         router.get('/users/:userID', this.validateAuth, function (req, res) {
-            var id = req.params.userID;
-            console.log("Query a user with id:" + id);
+            // var id = req.params.userID;
+            // console.log("Query a user with id:" + id);
+            // console.log("tt");
+            // console.log(_this.googlePassportObj);
             _this.User.retrieveUser(res, { userID: id });
         });
         //route to return JSON of messages by chat
         router.get('/messages/:chat_id', this.validateAuth, function (req, res) {
+
             var id = req.params.chat_id;
             console.log("Query messages from chat:" + id);
+            console.log("tt");
+            console.log(_this.googlePassportObj);
+
             _this.Message.retrieveAllMessages(res, { chat_id: id });
+        });
+
+        router.get('/mymessages/:chat_id', this.validateAuth, function (req, res) {
+
+            var id = req.params.chat_id;
+            console.log("Query messages from chat:" + id);
+            console.log("tt");
+            console.log(_this.googlePassportObj);
+
+            _this.Message.retrieveMyMessages(res, { chat_id: id, user_id: userId });
         });
 
         //route to return JSON of all users
         router.get('/messages', this.validateAuth, function (req, res) {
-            console.log("Query all messages");
+            // console.log("Query all messages");
+            // console.log("tt");
+            // console.log(_this.googlePassportObj);
             _this.Message.retrieveAll(res);
         });
-
         router.post("/messages/:chat_id", this.validateAuth, function (req, res) {
-            console.log("adding a message");
+            // console.log("adding a message");
+            // console.log("tt");
 
-            const data  = req.body;
-            // message_id: Number,
-            // message_time: Date,
-            // message_type: String,
-            // message_content: String,
-            // user_id: Number,
-            // chat_id: Number
-
-            data.user_id = req.user.id;
-            data.message_type = req.user.displayName;
-            _this.Message.addMessage(data);
-
-
-            //_this.Message.addMessage(req.body);
+            //req.body.message_type = userName;
+            _this.Message.addMessage(req.body);
         });
-
         this.expressApp.use('/', router);
         // this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
         // this.expressApp.use('/images', express.static(__dirname+'/img'));

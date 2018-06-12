@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { ChatmenuComponent } from './chatmenu/chatmenu.component';
 import { ChatwindowComponent} from './chatwindow/chatwindow.component';
 import { LinksComponent} from './links/links.component';
+import { MymessageComponent} from './mymessage/mymessage.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'links', component: LinksComponent },
   { path: 'chatmenu', component: ChatmenuComponent },
+  { path: 'mymsg', component: MymessageComponent },
   { path: 'chatwindow', component: ChatwindowComponent}
 
 

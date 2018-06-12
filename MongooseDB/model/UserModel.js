@@ -17,6 +17,7 @@ var UserModel = /** @class */ (function () {
             user_ps: String
         }, { collection: 'users' });
     };
+
     UserModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Users", this.schema);
     };

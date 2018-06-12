@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 import { LinksComponent } from './links/links.component';
+import { MymessageComponent } from './mymessage/mymessage.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { LinksComponent } from './links/links.component';
     Navitem2Component,
     ChatmenuComponent,
     ChatwindowComponent,
-    LinksComponent
+    LinksComponent,
+    MymessageComponent
+
   ],
   imports: [
     BrowserModule,

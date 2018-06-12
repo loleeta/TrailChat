@@ -1,12 +1,12 @@
-<!-- Left hand Chat Room Selection -->
 <chatmenu (selectChatRoom)="selectChatRoom($event)"></chatmenu>
 
 <!-- Big Container to hold the messages -->
   <div class = "messagebox">
     <div class="individual-box" *ngFor = "let message of chatMsgs">
       <div class="messagebox-header">
-        <h5 class = "messagebox-title">User ID: {{message.user_id}}</h5>
-        <!-- <div class = "messagebox-time">{{message.message_time}}</div> -->
+        <!-- <h5 class = "messagebox-title">User ID: {{message.user_id}}</h5> -->
+        <h5 class = "messagebox-title">{{message.message_type}}</h5>
+        <div class = "messagebox-time">{{message.message_time | date: 'medium'}}</div>
       </div>
       <p class = "messagebox-text">{{message.message_content}}</p>
     </div>

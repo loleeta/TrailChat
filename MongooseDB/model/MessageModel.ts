@@ -32,8 +32,8 @@ class MessageModel {
     }
 
     public addMessage(message): void {
-        console.log('testing to see if message was added to database');
-        console.log(message);
+        // console.log('testing to see if message was added to database');
+        // console.log(message);
         //var query =
         this.model.create(message);
         //query.exec();
