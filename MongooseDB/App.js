@@ -103,6 +103,7 @@ var App = /** @class */ (function () {
             _this.Message.retrieveAllMessages(res, { chat_id: id });
         });
 
+
         router.get('/mymessages/:chat_id', this.validateAuth, function (req, res) {
 
             var id = req.params.chat_id;
@@ -113,6 +114,7 @@ var App = /** @class */ (function () {
             _this.Message.retrieveMyMessages(res, { chat_id: id, user_id: userId });
         });
 
+
         //route to return JSON of all users
         router.get('/messages', this.validateAuth, function (req, res) {
             // console.log("Query all messages");
@@ -121,12 +123,12 @@ var App = /** @class */ (function () {
             _this.Message.retrieveAll(res);
         });
         router.post("/messages/:chat_id", this.validateAuth, function (req, res) {
-            // console.log("adding a message");
-            // console.log("tt");
 
-            //req.body.message_type = userName;
+            console.log("adding a message");
+
             _this.Message.addMessage(req.body);
         });
+        
         this.expressApp.use('/', router);
         // this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
         // this.expressApp.use('/images', express.static(__dirname+'/img'));
