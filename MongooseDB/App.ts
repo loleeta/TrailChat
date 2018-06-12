@@ -61,19 +61,14 @@ class App {
         router.get('/auth/google',
             passport.authenticate('google',
                 { scope: ['https://www.googleapis.com/auth/plus.login', 'email'] }
-            ), (res, req) => {
-            console.log(req);
-            }
+            )
         );
 
         router.get('/auth/google/callback',
             passport.authenticate('google',
                 { successRedirect: '/#/chatwindow', failureRedirect: '/'
                 }
-            ), function(res, req) {
-                console.log("2RES:" + res);
-                console.log("2REQ:" + req);
-            }
+            )
         );
 
 
