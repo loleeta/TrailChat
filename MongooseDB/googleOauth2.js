@@ -9,8 +9,8 @@ exports.__esModule = true;
 var googleOauth2 = /** @class */ (function () {
     function googleOauth2() {
     }
-    googleOauth2.id = '553848908512-druc1c98dcvua05ghmjq3pjcefmo34vs.apps.googleusercontent.com';
-    googleOauth2.secret = 'GsVgpnLi7zlYdSbJg_CwqYlU';
+    googleOauth2.id = '';
+    googleOauth2.secret = '';
     return googleOauth2;
 }());
 exports["default"] = googleOauth2;
