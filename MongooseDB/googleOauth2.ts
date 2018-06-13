@@ -8,8 +8,8 @@
 
 
 class googleOauth2 {
-static id: string = '553848908512-druc1c98dcvua05ghmjq3pjcefmo34vs.apps.googleusercontent.com';
-static secret:string = 'GsVgpnLi7zlYdSbJg_CwqYlU';
+static id: string = '';
+static secret:string = '';
 
 }
 
